@@ -2,26 +2,54 @@
 # -*- coding: utf-8 -*-
 
 
+class Node(Object):
+    def __init__(self, value, next=0):
+        self.data = value
+        self.next = next
+    
+class Linklist(Object):
+    def __init__(self):
+        self.head = 0
 
-class findSameNode(Object):
+    def initialize(self, data):
+        self.head = Node(data[0])
+        tmp = self.head
+        for v in data[1:]:
+            node = Node(v)
+            tmp.next = node
+            tmp = tmp.next
+
+
+class FindShareNode(Object):
     def __init__(self):
         self.visitor = dict()
 
     def updateVisitor(node):
-        visitor[node.next] += 1 
+        self.visitor[node.next] += 1 
 
-link1 = linklist()
-link2 = linklist()
+link1 = Linklist()
+link1.initialize(range(1,10))
+link2 = Linklist()
+link2.link1.initialize(range(11,15))
 
-finder = findSameNode()
+node = link1.head
+while True:
+    if node.next == 0:
+        break
+    node = node.next
 
-for node in link1:
-    finder.updateVisitor(node)
+link1_tail = node
+link1_tail.next = link2.head
 
-for node in link2:
-    finder.updateVisitor(node)
+# now link1 is a combination of link1 and link2
+slow_p = fast_p = link1.head
+while True:
+    fast_p = fast_p.next.next
+    slow_p = slow_p.next
+    if fast_p == slow_p:
+        print 'Fonud shared node'
+        break
+    if fast_p.next == 0:
+        print 'No shared node found'
+        break
 
-if 2 in finder.visitor.values():
-    print 'Fonud shared node'
-else:
-    print 'No shared node found'
