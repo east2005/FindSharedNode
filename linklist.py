@@ -2,12 +2,12 @@
 # -*- coding: utf-8 -*-
 
 
-class Node(Object):
+class Node(object):
     def __init__(self, value, next=0):
         self.data = value
         self.next = next
     
-class Linklist(Object):
+class Linklist(object):
     def __init__(self):
         self.head = 0
 
@@ -20,17 +20,10 @@ class Linklist(Object):
             tmp = tmp.next
 
 
-class FindShareNode(Object):
-    def __init__(self):
-        self.visitor = dict()
-
-    def updateVisitor(node):
-        self.visitor[node.next] += 1 
-
 link1 = Linklist()
 link1.initialize(range(1,10))
 link2 = Linklist()
-link2.link1.initialize(range(11,15))
+link2.initialize(range(11,15))
 
 node = link1.head
 while True:
