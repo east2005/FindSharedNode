@@ -19,7 +19,6 @@ class Linklist(object):
             tmp.next = node
             tmp = tmp.next
 
-
 link1 = Linklist()
 link1.initialize(range(1,10))
 link2 = Linklist()
